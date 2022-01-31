@@ -1,8 +1,6 @@
-from pyexpat import model
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from ticketSite.ticketapp.models import Person
-from ticketapp import Ticket, Category, Status
+from ticketSite.ticketapp.models import Category, Ticket
 """""" """""" """""" """""" """""" """""" """""" """""" """""" """""" """""" """""" """""" """""" """""" """
                 MY DATABASE MODEL SETUP USING SERIALIZERS TO DEFINE OUR
                 
@@ -15,39 +13,23 @@ from ticketapp import Ticket, Category, Status
 class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        {}
-
-    model = [User, Person]
-    fields = [('url', 'username', 'first_name', 'last_name', 'email',
-               'is_staff')]
+        model = User
+        fields = ('url', 'username', 'first_name', 'last_name', 'email',
+                  'is_staff')
 
 
-# This Serializer defines the API representation.
+# This Tickecket Serializer defines the API representation.
 class TicketSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        {}
-
-    model = [Ticket]
-    fields = [('id', 'title', 'ticket_id', 'user', 'content', 'category',
-               'date_logged', 'status', 'gps_cord')]
+        model = Ticket
+        fields = ('id', 'title', 'ticket_id', 'user', 'content', 'category',
+                  'created', 'modified')
 
 
-# This Serializer defines the API representation.
+# This Category Serializer defines the API representation.
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        {}
-
-    model = [Category]
-    fields = ('name', 'slug')
-
-
-# This Serializer defines Status_Queries
-class StatusViewSerializer(serializers.HyperlinkedModelSerializer):
-
-    class Meta:
-        {}
-
-    model = [Status]
-    fields = [('name', 'slug')]
+        model = Category
+        field = ('name', 'slug')

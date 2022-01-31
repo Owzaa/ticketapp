@@ -34,8 +34,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'ticketing',
     'bootstrap5',
+    'ticketSite',
 ]
 
 MIDDLEWARE = [

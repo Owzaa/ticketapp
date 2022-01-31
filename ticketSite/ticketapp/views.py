@@ -1,6 +1,27 @@
 from django.shortcuts import render
+from rest_framework import routers, serializers, viewsets
+from ticketSite.ticketapp.serializers import UserSerializer, TicketSerializer, CategorySerializer
+from django.contrib.auth.models import User
 from django.views.decorators.debug import sensitive_variables
-from django.db import Ticket, context
+from .models import Ticket, Category
+
+
+# ViewSet define Users view.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+# ViewSet define Ticket view behavior.
+class TicketViewSet(viewsets.ModelViewSet):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
+
+
+# Category View()
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 
 # Defining User Personal Details for logged ticket
@@ -16,6 +37,3 @@ def process_info(user, first_name, last_name, e_mail, date_logged,
         status_query: object.status,
         password: object.password,
     }
-
-
-# Sending e_mail back to users e_mail with ticket_logged()

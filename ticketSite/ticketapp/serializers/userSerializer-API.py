@@ -1,9 +1,8 @@
-from django.contrib.admin.models import Person
 from serializers import User
 from ticketSite.ticketapp import serializers
 
 
-class PersonSerializer(serializers.Serializer):
+class UserSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     username = serializers.CharField(max_length=200)
     password = serializers.CharField(max_length=100,
