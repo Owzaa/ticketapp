@@ -28,12 +28,10 @@ class CategoryViewSet(viewsets.ModelViewSet):
 @sensitive_variables('user', 'password')
 def process_info(user, first_name, last_name, e_mail, date_logged,
                  status_query, password):
-    {
-        user: object.username,
-        first_name: object.first_name,
-        last_name: object.last_name,
-        e_mail: object.e_mail,
-        date_logged: object.date_logged,
-        status_query: object.status,
-        password: object.password,
-    }
+    user = user.objects.all()
+    first_name = first_name.objects.all()
+    last_name = last_name.objects.all()
+    e_mail = e_mail.objects.all()
+    date_logged = date_logged.objects.all()
+    status_query = status_query.objects.all()
+    password = password.object.all()
