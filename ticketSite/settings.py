@@ -14,7 +14,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,8 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ticketapp',
     'ticketing',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.core.mail.backends.smtp.EmailBackend',
 ]
 
 ROOT_URLCONF = 'ticketSite.urls'
@@ -71,41 +70,36 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ticketSite.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default':{},
-    'ticket_db' {
-        'ENGINE': "django.db.backends.sqlexpress",
-        'NAME': "DB_NAME",
-        'USER': "DB_USER",
-        'PASSWORD': "DB_PASS",
-        'HOST': "DB_HOST",
-        'PORT': "DB_PORT",    
-    }  
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'Ticket_Data',
+    }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -118,7 +112,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
@@ -127,22 +120,12 @@ STATIC_URL = '/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Our Ticket app Sequence Configuration
-
-TICKETING_SEQUENCE ={
-
-
-
-}
-TICKETING_SEQUENCES= ('user','first_name','last_name','date_logged','status',)
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField',
 
 # Our API Restframework Configurations
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-      'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    'DEFAULT_PERMISSION_CLASSES':
+    ['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly']
 }
