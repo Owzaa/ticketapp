@@ -47,7 +47,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.core.mail.backends.smtp.EmailBackend',
 ]
 
 ROOT_URLCONF = 'ticketSite.urls'
@@ -120,7 +119,7 @@ STATIC_URL = '/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField',
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Our API Restframework Configurations
 REST_FRAMEWORK = {

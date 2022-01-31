@@ -120,7 +120,3 @@ class Category(models.Model):
 
 
 # Defining our GPS Model & merging it with gps_cord Model
-class Gps_Details(Status):
-
-    def get_context_data(self, **kwargs):
-        return Gps_Details(**kwargs)
