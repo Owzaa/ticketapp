@@ -26,7 +26,6 @@ class Ticket(models.Model):
     )
 
     # Status Query Selection_List
-
     STATUS_QUERY = (
         ('NL', 'NEWLY LOGGED'),
         ('IP', 'IN PROGRESS'),
